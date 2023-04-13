@@ -38,7 +38,7 @@ public class Tv {
 
     public void stateOfTV() {
 
-        System.out.println("You're watching " + currentChannel + "" +
+        System.out.println("You're watching " + currentChannel + "." +
         " The volume is " + volume + ".");
 
 
@@ -81,7 +81,9 @@ public class Tv {
 
             System.out.println("TV is now turned on");
             stateOfTV();
-            watchingTV();
+            watchingTV("By typing 'ch' you get an overview of the " +
+                    "channels you can watch and instructions on how to change channel. By typing 'v' you can " +
+                    "set the volume of the TV. \nYou turn off the tv by typing 'off'");
 
 
         }
@@ -106,10 +108,9 @@ public class Tv {
 
 
 
-public void changeVolume(){
+public void changeVolume(String msg){
 
-    String userInput = textUIGettingUserInput("You can now change the volume. Type the volume you want the TV " +
-            "to be on. Max volume is 50. Min volume is 0");
+    String userInput = textUIGettingUserInput(msg);
 
     if (userInput.equalsIgnoreCase("q"))
     {
@@ -132,11 +133,14 @@ public void changeVolume(){
 
             setVolume(newVolume);
             System.out.println("The volume is now " + volume);
-            watchingTV();
+            watchingTV("'ch': Channel selection \n" +
+                    "'v': Change volume\n" +
+                    "'off': Turn TV off\n" +
+                    "'Q': Quit program");
         }
         else {
             System.out.println("You didn't type a number between 0 and 50. Try again");
-            changeVolume();
+            changeVolume("Type a number between 0 and 50");
         }
 
 
@@ -144,7 +148,7 @@ public void changeVolume(){
     catch (Exception e)  {
 
         System.out.println("You didn't type a number. Try again");
-        changeVolume();
+        changeVolume("Type a number between 0 and 50");
 
 
 
@@ -174,27 +178,42 @@ public void changeChannel(){
         case "1":
             currentChannel = channels.get(0);
             System.out.println("You're now watching " + currentChannel);
-            watchingTV();
+            watchingTV("'ch': Channel selection \n" +
+                    "'v': Change volume\n" +
+                    "'off': Turn TV off\n" +
+                    "'Q': Quit program");
             break;
         case "2":
             currentChannel = channels.get(1);
             System.out.println("You're now watching " + currentChannel);
-            watchingTV();
+            watchingTV("'ch': Channel selection \n" +
+                    "'v': Change volume\n" +
+                    "'off': Turn TV off\n" +
+                    "'Q': Quit program");
             break;
         case "3":
             currentChannel = channels.get(2);
             System.out.println("You're now watching " + currentChannel);
-            watchingTV();
+            watchingTV("'ch': Channel selection \n" +
+                    "'v': Change volume\n" +
+                    "'off': Turn TV off\n" +
+                    "'Q': Quit program");
             break;
         case "4":
             currentChannel = channels.get(3);
             System.out.println("You're now watching " + currentChannel);
-            watchingTV();
+            watchingTV("'ch': Channel selection \n" +
+                    "'v': Change volume\n" +
+                    "'off': Turn TV off\n" +
+                    "'Q': Quit program");
             break;
         case "5":
             currentChannel = channels.get(4);
             System.out.println("You're now watching " + currentChannel);
-            watchingTV();
+            watchingTV("'ch': Channel selection \n" +
+                    "'v': Change volume\n" +
+                    "'off': Turn TV off\n" +
+                    "'Q': Quit program");
             break;
 
         case "off":
@@ -216,13 +235,11 @@ public void changeChannel(){
 
 }
 
-    public void watchingTV(){
+    public void watchingTV(String msg){
 
         if (onOrOff==true) {
 
-            String userInput = textUIGettingUserInput("By typing 'ch' you get an overview of the " +
-                    "channels you can watch and instructions on how to change channel. By typing 'v' you can " +
-                    "set the volume of the TV. \nYou turn off the tv by typing 'off'" );
+            String userInput = textUIGettingUserInput(msg );
 
 
             if (userInput.equalsIgnoreCase("ch")) {
@@ -233,7 +250,8 @@ public void changeChannel(){
 
             } else if (userInput.equalsIgnoreCase("v")) {
 
-                changeVolume();
+                changeVolume("You can now change the volume. Type the volume you want the TV " +
+                        "to be on. Max volume is 50. Min volume is 0");
 
 
 
@@ -255,7 +273,10 @@ public void changeChannel(){
                 }
 
             else {
-                watchingTV();
+                watchingTV("'ch': Channel selection \n" +
+                        "'v': Change volume\n" +
+                        "'off': Turn TV off\n" +
+                        "'Q': Quit program");
             }
         }
 
